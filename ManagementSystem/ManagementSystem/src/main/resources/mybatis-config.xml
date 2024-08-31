@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="CESU-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+        <!--    properties是一个配置属性的元素，该元素的作用是读取外部文件的配置信息。可以使用${mysql.url}获取外部文件中的配置信息。-->
+<properties resource="db.properties"/>
+
+<settings>
+<setting name="logImpl" value="STDOUT_LOGGING"/>
+<!-- 打开延迟加载的开关，，默认是false -->
+<setting name="lazyLoadingEnabled" value="true"/>
+<!-- 将积极加载改为消息加载，即按需加载。这个的作用呢？？？？是将加载设置为积极加载，
+什么意思？当对象的某个属性被使用的时候，全部属性都加载；否则，只加载使用到的属性。默认值是true-->
+<setting name="aggressiveLazyLoading" value="true"/>
+<!--        开启二级缓存，mapper缓存-->
+<setting name="cacheEnabled" value="true"/>
+</settings>
+        <!--    使用<typeAliases>定义pojo的别名-->
+<typeAliases>
+<package name="ssm.demo.pojo"/>
+</typeAliases>
+
+<environments default="development">
+<environment id="development">
+    <transactionManager type="JDBC"/>
+    <dataSource type="POOLED">
+        <property name="driver" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+    </dataSource>
+</environment>
+</environments>
+
+<mappers>
+    <mapper resource="ApartmentMapper.xml"></mapper>
+    <mapper resource="EmployeeMapper.xml"></mapper>
+    <mapper resource="PeopleMapper.xml"></mapper>
+    <mapper resource="Room_GoodMapper.xml"></mapper>
+    <mapper resource="RoomMapper.xml"></mapper>
+    <mapper resource="Stu_ApartMapper.xml"></mapper>
+    <mapper resource="StudentMapper.xml"></mapper>
+</mappers>
+</configuration>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.ApartmentMapper">
+
+<!--    查询：select标签-->
+    <select id="selectApartment" parameterType="cn.edu.tyut.pojo.Apartment" resultType="cn.edu.tyut.pojo.Apartment">
+        select * from apartments
+        <where>
+            <if test="aid != null and aid != ''">
+                AND aid = #{aid}
+            </if>
+            <if test="apeople != null and apeople != ''">
+                AND apeople = #{apeople}
+            </if>
+            <if test="nowapeople != null and nowapeople != ''">
+                AND nowapeople = #{nowapeople}
+            </if>
+            <if test="roomnumber != null and roomnumber != ''">
+                AND roomnumber = #{roomnumber}
+            </if>
+            <if test="asex != null and asex != ''">
+                AND asex = #{asex}
+            </if>
+        </where>
+    </select>
+<!--    增加：insert标签-->
+    <insert id="insertApartment" parameterType="cn.edu.tyut.pojo.Apartment">
+        insert into apartments(aid,apeople,nowapeople,roomnumber,asex) values (#{aid},#{apeople},#{nowapeople},#{roomnumber},#{asex})
+    </insert>
+<!--    修改：update标签-->
+    <update id="updateApartment" parameterType="cn.edu.tyut.pojo.Apartment">
+        update apartments
+        <set>
+            <if test="aid != null and aid != ''">
+                aid = #{aid},
+            </if>
+            <if test="apeople != null and apeople != ''">
+                apeople = #{apeople},
+            </if>
+            <if test="nowapeople != null and nowapeople != ''">
+                nowapeople = #{nowapeople},
+            </if>
+            <if test="roomnumber != null and roomnumber != ''">
+                roomnumber = #{roomnumber},
+            </if>
+            <if test="asex != null and asex != ''">
+                asex = #{asex},
+            </if>
+        </set>
+        where aid = #{aid}
+    </update>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.EmployeeMapper">
+
+    <select id="findEmployee" parameterType="cn.edu.tyut.pojo.Employee" resultType="cn.edu.tyut.pojo.Employee">
+        select * from employees
+        <where>
+            <if test="eid != null and eid !=''">
+                and eid = #{eid}
+            </if>
+        </where>
+    </select>
+
+    <insert id="insertEmployee" parameterType="cn.edu.tyut.pojo.Employee">
+        insert into employees(eid,password,name,sex,age,aid)values (#{eid},#{password},#{name},#{sex},#{age},#{aid})
+    </insert>
+
+    <update id="updateEmployee" parameterType="cn.edu.tyut.pojo.Employee">
+        update employees
+            <set>
+                <if test="password != null and password != ''">
+                    password = #{password},
+                </if>
+                <if test="name != null and name != ''">
+                    name = #{name},
+                </if>
+                <if test="sex != null and sex != ''">
+                    sex = #{sex},
+                </if>
+                <if test="age != null and age != ''">
+                    age = #{age},
+                </if>
+                <if test="aid != null and aid != ''">
+                    aid = #{aid},
+                </if>
+            </set>
+        where eid = #{eid}
+    </update>
+
+    <delete id="deleteEmployee" parameterType="Integer">
+        delete from employees where eid = #{eid}
+    </delete>
+</mapper>

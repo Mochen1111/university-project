@@ -1,0 +1,22 @@
+<!--xml的约束，对于IOC，DI(注解的实现)和mvc约束不同。在基础的约束上增加了context约束-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd
+ http://www.springframework.org/schema/tx
+                http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--    使用context命名空间，在配置文件中开启相应的注解处理器。注解处理器会自动扫描指定的包-->
+    <context:component-scan base-package="cn.edu.tyut.service"/>
+    <!--添加事务支持-->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"></property>
+
+    </bean>
+    <!--        开启事务注解-->
+    <tx:annotation-driven transaction-manager="txManager"></tx:annotation-driven>
+</beans>

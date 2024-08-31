@@ -1,0 +1,30 @@
+<!--xml的约束，对于IOC，DI(注解的实现)和mvc约束不同。在基础的约束上增加了context约束-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/context
+  http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:db.properties"></context:property-placeholder>
+    <!--    使用context命名空间，在配置文件中开启相应的注解处理器。注解处理器会自动扫描指定的包-->
+    <context:component-scan base-package="cn.edu.tyut.dao"/>
+    <!--    使用注解时，不需要在这个配置文件中创建bean标签了。-->
+    <bean class="org.mybatis.spring.SqlSessionFactoryBean" id="sessionFactory">
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    <bean class="org.apache.commons.dbcp2.BasicDataSource" id="dataSource">
+        <property name="driverClassName" value="${mysql.driver}"/>
+        <property name="url" value="${mysql.url}"/>
+        <property name="username" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" id="configurer">
+
+        <property name="basePackage" value="cn.edu.tyut.dao"></property>
+        <property name="sqlSessionFactoryBeanName" value="sessionFactory"></property>
+
+    </bean>
+</beans>

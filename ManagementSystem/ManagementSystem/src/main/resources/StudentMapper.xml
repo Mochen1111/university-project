@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.StudentMapper">
+
+<!--    查询：select标签-->
+    <select id="selectStudent" parameterType="cn.edu.tyut.pojo.Student" resultType="cn.edu.tyut.pojo.Student">
+        select * from students
+        <where>
+            <if test="sid != null and sid != ''">
+                AND sid= #{sid}
+            </if>
+            <if test="name != null and name != ''">
+                AND name= #{name}
+            </if>
+            <if test="sex != null and sex != ''">
+                AND sex= #{sex}
+            </if>
+            <if test="major != null and major != ''">
+                AND major= #{major}
+            </if>
+            <if test="grade != null and grade != ''">
+                AND grade= #{grade}
+            </if>
+            <if test="stuclass != null and stuclass != ''">
+                AND stuclass= #{stuclass}
+            </if>
+            <if test="state != null and state != ''">
+                AND state= #{state}
+            </if>
+        </where> order by major,sid
+    </select>
+<!--    增加：insert标签-->
+    <insert id="insertStudent" parameterType="cn.edu.tyut.pojo.Student">
+        insert into students(sid,name,sex,major,grade,stuclass,state)values (#{sid},#{name},#{sex},#{major},#{grade},#{stuclass},#{state})
+    </insert>
+<!--    修改：update标签-->
+    <update id="updateStudent" parameterType="cn.edu.tyut.pojo.Student">
+        update students set sid=#{sid},name=#{name},sex=#{sex},major=#{major},grade=#{grade},stuclass=#{stuclass},state=#{state} where sid = #{sid}
+    </update>
+<!--    删除：delete标签-->
+    <delete id="deleteStudent" parameterType="int">
+        delete from students where sid=#{sid}
+    </delete>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.Stu_ApartMapper">
+
+    <insert id="insertStuA" parameterType="cn.edu.tyut.pojo.Stu_Apart">
+        insert into stu_apart(sid,rid,aid) values (#{sid},#{rid},#{aid})
+    </insert>
+    <select id="selectStuA" parameterType="cn.edu.tyut.pojo.Stu_Apart" resultType="cn.edu.tyut.pojo.Stu_Apart">
+        select * from stu_apart
+        <where>
+            <if test="sid != null and sid != ''">
+                and sid = #{sid}
+            </if>
+            <if test="rid != null and rid != ''">
+                and rid = #{rid}
+            </if>
+            <if test="aid != null and aid != ''">
+                and aid = #{aid}
+            </if>
+        </where>
+    </select>
+
+    <delete id="deleteStuA" parameterType="int">
+        delete from stu_apart where sid = #{sid}
+    </delete>
+</mapper>

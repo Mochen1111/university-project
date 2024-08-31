@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.RoomMapper">
+
+    <insert id="insertRoom" parameterType="cn.edu.tyut.pojo.Room">
+        insert into rooms(rid,rpeople,nowrpeople,aid,sex) values (#{rid},#{rpeople},#{nowrpeople},#{aid},#{sex})
+    </insert>
+    <update id="updateRoom" parameterType="cn.edu.tyut.pojo.Room" >
+        update rooms
+        <set>
+            <if test="rpeople != null and rpeople != ''">
+                rpeople = #{rpeople},
+            </if>
+            <if test="nowrpeople != null and nowrpeople != ''">
+                nowrpeople = #{nowrpeople},
+            </if>
+            <if test="sex != null and sex != ''">
+                sex = #{sex},
+            </if>
+        </set>
+        where rid = #{rid} and aid = #{aid}
+    </update>
+    <select id="selectRoom" parameterType="cn.edu.tyut.pojo.Room" resultType="cn.edu.tyut.pojo.Room">
+        select * from rooms
+        <where>
+            <if test="rid != null and rid != ''">
+                and rid = #{rid}
+            </if>
+            <if test="aid != null and aid != ''">
+                and aid = #{aid}
+            </if>
+        </where>
+    </select>
+</mapper>

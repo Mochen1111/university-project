@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="cn.edu.tyut.dao.Room_GoodMapper">
+
+    <select id="selectGood" parameterType="cn.edu.tyut.pojo.Room_Good" resultType="cn.edu.tyut.pojo.Room_Good">
+        select * from room_goods
+        <where>
+            <if test="rid != null and rid != ''">
+                and rid = #{rid}
+            </if>
+            <if test="aid != null and aid != ''">
+                and aid = #{aid}
+            </if>
+            <if test="gname != null and gname != ''">
+                and gname = #{gname}
+            </if>
+            <if test="gnumber != null and gnumber != ''">
+                and gnumber = #{gnumber}
+            </if>
+        </where>
+        order by aid,rid,gname
+    </select>
+
+    <insert id="insertGood" parameterType="cn.edu.tyut.pojo.Room_Good">
+        insert into room_goods(aid,rid,gname,gnumber) values (#{aid},#{rid},#{gname},#{gnumber})
+    </insert>
+
+    <delete id="deleteGood" parameterType="cn.edu.tyut.pojo.Room_Good">
+        delete from room_goods where aid = #{aid} and rid = #{rid} and gname = #{gname}
+   </delete>
+
+    <update id="updateGood" parameterType="cn.edu.tyut.pojo.Room">
+        updata room_goods set gnumber = #{gnumber} where aid = #{aid} and rid = #{rid} and gname = #{gname}
+    </update>
+
+</mapper>
