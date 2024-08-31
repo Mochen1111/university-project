@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>线上超市购物登录页面</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/foot.css}" rel="stylesheet">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.5.1.js" type="application/javascript"></script>
+</head>
+<body>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">提示信息</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" th:text="${message}"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="margin: 2%">
+    <div class="row p-3">
+        <div class="12" style="text-align: center">
+            <h2>JoJa线上超市登录页面</h2>
+        </div>
+        <div class="col-8" style="text-align: center">
+            <img src="../UpLoadFiles/logo02892.svg">
+        </div>
+        <div class="col-4 d-flex align-items-center">
+            <div>
+                <form class="row g-3" method="post" th:action="@{/login}">
+                    <div class="col-12 mb-3">
+                        <label for="inputUserName" class="form-label">用户名</label>
+                        <input type="text" class="form-control" id="inputUserName" aria-describedby="Help" name="username" required>
+                        <div id="Help" class="form-text">提示：请保存好您的用户名和密码</div>
+                    </div>
+                    <div class="col-12 mb-3">
+                        <label for="inputPassword" class="form-label">密码</label>
+                        <input type="password" class="form-control" id="inputPassword" name="password" required>
+                    </div>
+                    <div class="row g-3" style="text-align: center">
+                        <div class="col-6">
+                            <button class="btn btn-primary" type="submit">登录</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-primary" type="button" onclick="window.location.href='/register.html'">注册</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--页面尾部内容-->
+<footer>
+    <div class="footer-nav">
+        <ul>
+            <li><a href="/toIndex.html">首页</a></li>
+            <li><a href="/aboutOur.html">关于我们</a></li>
+            <li><a href="/aboutOur.html">联系我们</a></li>
+            <li><a href="#top">服务</a></li>
+        </ul>
+    </div>
+    <div class="footer-info">
+        <p>© 2024 Taiyuan University of Technology. All rights reserved.</p>
+        <p><a href="#top">隐私政策</a> | <a href="#top">使用条款</a> | <a href="#top">常见问题</a></p>
+    </div>
+    <div class="footer-social">
+        <ul>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-contact">
+        <p>联系我们：1234xxxxx@qq.com</p>
+        <p>电话：123-456-7890</p>
+    </div>
+    <div class="footer-back-to-top">
+        <a href="#top">返回顶部</a>
+    </div>
+</footer>
+</body>
+<script th:inline="javascript">
+    $(document).ready(function (){
+        var con = [[${flag}]];
+        if (con === true){
+            $("#myModal").modal("show");
+        }
+    })
+</script>
+<style>
+
+</style>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/foot.css}" rel="stylesheet">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.5.1.js" type="application/javascript"></script>
+</head>
+<body>
+<!--前台导航栏-->
+<div class="shadow-sm mb-5 rounded ">
+    <nav class="navbar navbar-light nav-color">
+        <div class="container-fluid" >
+            <a class="navbar-brand" href="/toIndex.html">
+                JoJa Market
+            </a>
+        </div>
+    </nav>
+</div>
+
+<div class="shadow p-3 mb-5 rounded bg-white" style="margin-left: 5%;margin-right: 5%;text-align: center">
+    <div class="row g-3">
+        <div class="col-6 mb-3">
+            <img src="../UpLoadFiles/logo02892.svg">
+        </div>
+        <div class="col-1 mb-3"></div>
+        <div class="col-4 mb-3 d-flex align-items-center">
+            <div class="row g-3">
+                <div class="col-12 mb-3">
+                    <h4>线上超市购物系统</h4>
+                </div>
+                <div class="col-12 mb-3">
+                    <h4>小组成员</h4>
+                </div>
+                <div class="col-12 mb-3">
+                    吴政洋 刘子琛 马吉昊 张耀东
+                </div>
+            </div>
+        </div>
+        <div class="col-1 mb-3"></div>
+    </div>
+</div>
+
+<!--页面尾部内容-->
+<footer>
+    <div class="footer-nav">
+        <ul>
+            <li><a href="/toIndex.html">首页</a></li>
+            <li><a href="/aboutOur.html">关于我们</a></li>
+            <li><a href="/aboutOur.html">联系我们</a></li>
+            <li><a href="#top">服务</a></li>
+        </ul>
+    </div>
+    <div class="footer-info">
+        <p>© 2024 Taiyuan University of Technology. All rights reserved.</p>
+        <p><a href="#top">隐私政策</a> | <a href="#top">使用条款</a> | <a href="#top">常见问题</a></p>
+    </div>
+    <div class="footer-social">
+        <ul>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-contact">
+        <p>联系我们：1234xxxxx@qq.com</p>
+        <p>电话：123-456-7890</p>
+    </div>
+    <div class="footer-back-to-top">
+        <a href="#top">返回顶部</a>
+    </div>
+</footer>
+</body>
+<style>
+    body{
+        background-color: #CDDFDF;
+    }
+    .nav-color{
+        background-color: #E4EFEF;
+    }
+</style>
+</html>

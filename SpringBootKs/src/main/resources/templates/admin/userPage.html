@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet">
+    <link th:href="@{/css/foot.css}" rel="stylesheet">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.5.1.js" type="application/javascript"></script>
+</head>
+<body>
+<!--管理员导航栏-->
+<div class="shadow-sm mb-5 rounded ">
+    <nav class="navbar navbar-light nav-color">
+        <div class="container-fluid" >
+            <a class="navbar-brand" href="/admin/index">
+                JoJa Market
+            </a>
+            <a class="nav-link active" href="/admin/index">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207l-5-5-5 5V13.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7.207Z"/>
+                </svg>
+                返回主页
+            </a>
+            <a class="nav-link active" href="/admin/userList">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                    <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                </svg>
+                用户管理
+            </a>
+            <a class="nav-link active" href="/admin/goodList">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-seam" viewBox="0 0 16 16">
+                    <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z"/>
+                </svg>
+                商品管理
+            </a>
+            <a class="nav-link active" href="/admin/aList">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-card-list" viewBox="0 0 16 16">
+                    <path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/>
+                    <path d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8zm0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zM4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+                </svg>
+                订单管理
+            </a>
+            <a class="nav-link active" href="/user/logOut">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                </svg>
+                退出登录
+            </a>
+        </div>
+    </nav>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">提示信息</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" th:text="${message}"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 用户删除模态框-->
+<div class="modal fade" id="delUserModal" tabindex="-1" aria-labelledby="deleteAddressModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAddressModal">用户删除</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                确认删除此用户吗？删除后不可恢复
+            </div>
+            <div class="modal-footer">
+                <a th:href="@{/admin/deleteId(id=${user.uid})}">
+                    <button type="button" class="btn btn-danger">删除用户</button>
+                </a>
+                <button type="button" class="btn btn-secondary " data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="shadow p-3 mb-5  rounded bg-white" style="margin-left: 5%;margin-right: 5%">
+    <div style="text-align: center">
+        <h4>用户信息</h4>
+    </div>
+    <br>
+    <hr>
+    <br>
+
+    <div class="row g-2" style="text-align: center">
+        <div class="col-4">
+            <div class="card p-3 mb-5 border bg-white">
+                <div class="row g-2">
+                    <div class="col-6 mb-3">
+                        用户名
+                    </div>
+                    <div class="col-6 mb-3">
+                        联系电话
+                    </div>
+                    <div class="col-6 mb-3" th:text="${user.username}">
+                    </div>
+                    <div class="col-6 mb-3" th:text="${user.phone}">
+                    </div>
+                    <hr>
+                    <div class="col-6 mb-3">
+                        电子邮箱
+                    </div>
+                    <div class="col-6 mb-3">
+                        用户权限
+                    </div>
+                    <div class="col-6 mb-3" th:text="${user.email}">
+                    </div>
+                    <div class="col-6 mb-3" th:if="${user.auth} eq '1'">
+                        管理员
+                    </div>
+                    <div class="col-6 mb-3" th:if="${user.auth} eq '2'">
+                        普通用户
+                    </div>
+                    <hr>
+                    <div class="col-12 mb-3">
+                        <button type="button" onclick="delUserModal()" class="btn btn-danger">删除用户</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="card p-3 mb-5 border bg-white">
+                <form class="row g-2" method="post" th:action="@{/admin/update/(id=${user.uid})}" id="myForm" onsubmit="return check(this)" style="text-align: center">
+                    <div class="col-12 mb-3">
+                        <h4 class="card-title">修改用户信息</h4>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1">Password</span>
+                            <input type="password" class="form-control" id="InputPassword" name="password" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon2">Password</span>
+                            <input type="password" class="form-control" id="InputPassword2" required >
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon3">PhoneNumber</span>
+                            <input type="text" class="form-control" id="InputPhone" th:placeholder="${user.phone}" name="phone" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon4">Email</span>
+                            <input type="email" class="form-control" id="InputEmail" th:placeholder="${user.email}" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <input class="form-check-input" type="radio" name="auth" id="admin" value="1">
+                                <label class="form-check-label" for="admin">
+                                    管理员
+                                </label>
+                            </div>
+                            <div class="col-6">
+                                <input class="form-check-input" type="radio" name="auth" id="user" checked value="2">
+                                <label class="form-check-label" for="user">
+                                    普通用户
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="tips" class="form-text col-12 mb-3">请再次输入密码</div>
+                    <div class="col-6">
+                        <button class="btn btn-primary" type="submit" id="myRegister">确认修改</button>
+                    </div>
+                    <div class="col-6">
+                        <button class="btn btn-primary" type="reset" >重置表单</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--页面尾部内容-->
+<footer>
+    <div class="footer-nav">
+        <ul>
+            <li><a href="/toIndex.html">首页</a></li>
+            <li><a href="/aboutOur.html">关于我们</a></li>
+            <li><a href="/aboutOur.html">联系我们</a></li>
+            <li><a href="#top">服务</a></li>
+        </ul>
+    </div>
+    <div class="footer-info">
+        <p>© 2024 Taiyuan University of Technology. All rights reserved.</p>
+        <p><a href="#top">隐私政策</a> | <a href="#top">使用条款</a> | <a href="#top">常见问题</a></p>
+    </div>
+    <div class="footer-social">
+        <ul>
+            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+        </ul>
+    </div>
+    <div class="footer-contact">
+        <p>联系我们：1234xxxxx@qq.com</p>
+        <p>电话：123-456-7890</p>
+    </div>
+    <div class="footer-back-to-top">
+        <a href="#top">返回顶部</a>
+    </div>
+</footer>
+</body>
+<script th:inline="javascript">
+    function delUserModal(){
+        $("#delUserModal").modal("show");
+    }
+    $(document).ready(function (){
+        var con = [[${flag}]];
+        if (con === true){
+            $("#myModal").modal("show");
+        }
+    })
+    $(document).ready(function (){
+        $("#myForm").on("input",function (){
+            var psw1 = $("#InputPassword").val();
+            var psw2 = $("#InputPassword2").val();
+            if (psw1 !== psw2){
+                $("#tips").text("请检查两次输入的密码是否相同");
+            }else if ($.isEmptyObject(psw1) && $.isEmptyObject(psw2)){
+                $("#tips").text("请保证正确输入了密码");
+            }else {
+                $("#tips").text("密码格式正确");
+            }
+        })
+    })
+
+    function check(obj){
+        if (obj.password !== "") {
+            var psw1 = $("#InputPassword").val();
+            var psw2 = $("#InputPassword2").val();
+            if (psw1 === psw2){
+                return true;
+            }else {
+                alert("请检查两次密码是否相同");
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+</script>
+<style>
+    body{
+        background-color: #CDDFDF;
+    }
+    .nav-color{
+        background-color: #E4EFEF;
+    }
+</style>
+</html>
